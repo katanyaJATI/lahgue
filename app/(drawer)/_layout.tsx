@@ -1,20 +1,25 @@
-import React from "react";
+import React from 'react';
 
-import Drawer from "expo-router/drawer";
+import Drawer from 'expo-router/drawer';
+import DrawerContent from '@/app/navigation/DrawerContent';
+import DrawerHeader from '../navigation/DrawerHeader';
 
 export default function DrawerLayout() {
   return (
-    <Drawer>
+    <Drawer
+      drawerContent={DrawerContent}
+      screenOptions={{ header: DrawerHeader }}
+    >
       <Drawer.Screen
         name="index"
         options={{
-          drawerLabel: "Home",
+          drawerLabel: 'Home',
         }}
       />
       <Drawer.Screen
         name="explore"
         options={{
-          drawerLabel: "User",
+          drawerLabel: 'User',
         }}
       />
     </Drawer>
