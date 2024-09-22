@@ -19,7 +19,7 @@ export default function DrawerLayout() {
       <Drawer.Screen
         name="explore"
         options={{
-          drawerLabel: 'User',
+          drawerLabel: 'Fresh',
         }}
       />
     </Drawer>

@@ -23,6 +23,7 @@ export type TextProps = RNTextProps & {
     | 'body2'
     | 'body3'
     | 'caption'
+    | 'smCaption'
   align?: 'center' | 'left' | 'right' | 'auto' | 'justify';
   children: React.ReactNode;
   flex?: boolean;
@@ -145,6 +146,11 @@ const styles = StyleSheet.create({
   caption: {
     fontFamily: PRIMARY_FONT_REGULAR,
     fontSize: 12 + RESPONSIVE,
+    lineHeight: 16,
+  },
+  smCaption: {
+    fontFamily: PRIMARY_FONT_REGULAR,
+    fontSize: 10 + RESPONSIVE,
     lineHeight: 16,
   },
   strikethrough: {
