@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { HStack, Text, VStack } from '@/components';
+import { HStack, Tag, Text, VStack } from '@/components';
 import styles from './style';
 import Metrics from '@/utils/metrics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -75,6 +75,21 @@ const PostInfo = ({ author, caption }: PostInfoProps) => {
       <Text type="caption" color="white">
         {caption}
       </Text>
+
+      <View style={styles.tags}>
+        <Tag
+          type="monetize"
+          label="Sawer"
+          onPress={() => console.log('pressed Sawer')}
+        />
+        <Tag
+          label="meme-dark-sejarah"
+          onPress={() => console.log('pressed meme-dark-sejarah')}
+        />
+        <Tag label="anime" onPress={() => console.log('pressed anime')} />
+        <Tag label="game" onPress={() => console.log('pressed game')} />
+        <Tag label="original" onPress={() => console.log('pressed original')} />
+      </View>
     </VStack>
   );
 };

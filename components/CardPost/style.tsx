@@ -71,6 +71,13 @@ export default StyleSheet.create({
     borderRadius: 100,
   },
 
+  tags: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    rowGap: 8,
+    columnGap: 8,
+  },
+
   shadow: {
     elevation: 1,
     shadowColor: colors.black,
