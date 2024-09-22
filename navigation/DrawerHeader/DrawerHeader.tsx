@@ -11,7 +11,7 @@ import {
 } from 'react-native-safe-area-context';
 
 import styles from './style';
-import { Text } from '@/app/components';
+import { Text } from '@/components';
 
 function DrawerHeader(props: DrawerHeaderProps) {
   return (

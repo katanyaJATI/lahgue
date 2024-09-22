@@ -1,5 +1,5 @@
-import colors, { ColorKey } from '@/app/styles/colors';
-import Metrics from '@/app/utils/metrics';
+import colors, { ColorKey } from '@/styles/colors';
+import Metrics from '@/utils/metrics';
 import * as React from 'react';
 import {
   StyleSheet,

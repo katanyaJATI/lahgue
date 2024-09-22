@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Drawer from 'expo-router/drawer';
-import DrawerContent from '@/app/navigation/DrawerContent';
-import DrawerHeader from '../navigation/DrawerHeader';
+import DrawerContent from '@/navigation/DrawerContent';
+import DrawerHeader from '@/navigation/DrawerHeader';
 
 export default function DrawerLayout() {
   return (

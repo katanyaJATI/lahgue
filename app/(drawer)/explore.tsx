@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 
-import { Text } from "../components";
+import { Text } from "../../components";
 
 export default function ExploreScreen() {
   return (
