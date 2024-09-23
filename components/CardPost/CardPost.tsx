@@ -7,16 +7,18 @@ import React, {
   useState,
 } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import * as Sharing from 'expo-sharing';
+
 import styles from './style';
 import Metrics from '@/utils/metrics';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import PostInfo from './PostInfo';
 import ActionsButton from './ActionsButton';
 import {
   BottomSheetBackdrop,
   BottomSheetFlatList,
-  BottomSheetModal
+  BottomSheetModal,
 } from '@gorhom/bottom-sheet';
 import { HStack, PostComment, Text } from '@/components';
 import { ICClose } from '@/assets/icons';
@@ -63,6 +65,12 @@ function CardPost({
           upvoteCount={upvoteCount}
           commentCount={commentCount}
           onCommentPress={() => bottomSheetModalRef.current?.present()}
+          onSharePress={async () => {
+            const check = await Sharing.isAvailableAsync();
+            if (check) {
+              Sharing.shareAsync('https://lahgue.com');
+            }
+          }}
         />
 
         <PostInfo author={author} caption={caption} />
@@ -210,7 +218,13 @@ const CommentsSheet = forwardRef<BottomSheetModal, CommentsSheetProps>(
               </HStack>
 
               <View style={styles.totalComments}>
-                <Text type="body2" weight='bold' color="plain" mt={0} align='right'>
+                <Text
+                  type="body2"
+                  weight="bold"
+                  color="plain"
+                  mt={0}
+                  align="right"
+                >
                   {comments.length} Komentar
                 </Text>
               </View>

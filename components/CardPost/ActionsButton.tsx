@@ -11,12 +11,14 @@ type ActionsButtonProps = {
   upvoteCount: number;
   commentCount: number;
   onCommentPress: () => void;
+  onSharePress: () => void;
 };
 const ActionsButton = ({
   vote: _vote,
   upvoteCount,
   commentCount,
   onCommentPress,
+  onSharePress,
 }: ActionsButtonProps) => {
   const { bottom } = useSafeAreaInsets();
   const [vote, setVote] = useState<'upvote' | 'downvote' | undefined>(_vote);
@@ -63,8 +65,15 @@ const ActionsButton = ({
         </TouchableOpacity>
       </View>
 
-      <Item icon={<ICComment />} count={commentCount} onPress={onCommentPress} />
-      <Item icon={<ICShare style={{ transform: [{ scaleX: -1 }] }} />} />
+      <Item
+        icon={<ICComment />}
+        count={commentCount}
+        onPress={onCommentPress}
+      />
+      <Item
+        icon={<ICShare style={{ transform: [{ scaleX: -1 }] }} />}
+        onPress={onSharePress}
+      />
     </VStack>
   );
 };
