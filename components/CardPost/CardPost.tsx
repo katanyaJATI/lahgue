@@ -98,7 +98,6 @@ const CommentsSheet = forwardRef<BottomSheetModal, CommentsSheetProps>(
             },
             comment:
               'This is a comment for post 2. This is a comment for post 2. This is a comment for post 2. This is a comment for post 2. ',
-            img: 'https://picsum.photos/id/58/900/1600',
           },
           {
             author: {

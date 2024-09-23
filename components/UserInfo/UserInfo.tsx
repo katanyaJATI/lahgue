@@ -27,7 +27,7 @@ function UserInfo({
       />
       <HStack spacing={8}>
         <Text
-          type={small ? 'caption' : 'smCaption'}
+          type={!small ? 'caption' : 'smCaption'}
           weight="bold"
           color={variant === 'light' ? 'white' : 'plain'}
         >

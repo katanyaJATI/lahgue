@@ -25,9 +25,9 @@ function PostComment({
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   return (
-    <VStack spacing={8} style={[styles.item, isNested && styles.noBorder]} ml={isNested ? 18 : 0}>
+    <VStack spacing={4} style={[styles.item, isNested && styles.noBorder]} ml={isNested ? 18 : 0}>
       <UserInfo avatar={author.avatar} name={author.name} variant="dark" small={isNested} />
-      <VStack spacing={6} ml={44}>
+      <VStack spacing={6} ml={44} mb={4}>
         <Text type="caption">{comment}</Text>
         {img && <Image source={{ uri: img }} style={!isNested ? styles.img : styles.imgSmall} />}
 
