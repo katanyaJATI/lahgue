@@ -65,11 +65,6 @@ export default StyleSheet.create({
     left: Metrics.marginHorizontal,
     right: Metrics.marginHorizontal + 40 + 16,
   },
-  imgAvatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 100,
-  },
 
   tags: {
     flexDirection: 'row',
