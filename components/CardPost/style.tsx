@@ -60,6 +60,27 @@ export default StyleSheet.create({
     shadowOpacity: 1,
   },
 
+  commentsContainer: {
+    flex: 1,
+    paddingHorizontal: Metrics.marginHorizontal,
+  },
+  commentsHeader: {
+    paddingVertical: 8,
+    paddingLeft: Metrics.marginHorizontal,
+    paddingRight: Metrics.marginHorizontal - 8,
+    borderBottomWidth: 0.6,
+    borderColor: colors.border + '33',
+    backgroundColor: colors.white,
+  },
+  btnClose: {
+    padding: 8
+  },
+  totalComments: {
+    paddingVertical: 12,
+    paddingHorizontal: Metrics.marginHorizontal,
+    backgroundColor: colors.white
+  },
+
   postInfo: {
     position: 'absolute',
     left: Metrics.marginHorizontal,

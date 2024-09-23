@@ -1,7 +1,6 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { Text } from '../../components';
-import CardPost from '@/components/CardPost';
+import { CardPost } from '@/components';
 
 const DATA = [
   {

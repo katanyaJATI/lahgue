@@ -2,30 +2,48 @@ import React from 'react';
 import { Image } from 'expo-image';
 import styles from './style';
 
-import { HStack, Text, VStack } from '@/components';
+import { HStack, Text } from '@/components';
 import { Author } from '@/components/CardPost';
 
 type UserInfoProps = {
   avatar: Author['avatar'];
   name: Author['name'];
+  variant?: 'light' | 'dark';
+  small?: boolean;
 };
 
-function UserInfo({ avatar, name }: UserInfoProps) {
+function UserInfo({
+  avatar,
+  name,
+  variant = 'light',
+  small = false,
+}: UserInfoProps) {
   return (
     <HStack spacing={8}>
       <Image
         source={{ uri: avatar }}
-        style={styles.imgAvatar}
+        style={!small ? styles.imgAvatar : styles.imgAvatarSmall}
         contentFit="cover"
       />
-      <VStack spacing={2}>
-        <Text type="caption" weight="bold" color="white">
+      <HStack spacing={8}>
+        <Text
+          type={small ? 'caption' : 'smCaption'}
+          weight="bold"
+          color={variant === 'light' ? 'white' : 'plain'}
+        >
           {name}
         </Text>
-        <Text type="smCaption" color="white">
-          {new Date().toDateString()}
+
+        <Text type="smCaption" color={variant === 'light' ? 'white' : 'fill_3'}>
+          {
+            new Date(new Date().toDateString()).toLocaleDateString('id-ID', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })
+          }
         </Text>
-      </VStack>
+      </HStack>
     </HStack>
   );
 }
