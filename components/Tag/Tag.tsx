@@ -1,11 +1,6 @@
 import React, { useMemo } from 'react';
-import {
-  StyleProp,
-  Touchable,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
-import { HStack, Text } from '..';
+import { TouchableOpacity } from 'react-native';
+import { HStack, Text } from '@/components';
 
 import styles from './style';
 import colors, { ColorKey } from '@/styles/colors';
