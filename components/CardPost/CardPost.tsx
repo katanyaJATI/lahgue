@@ -101,7 +101,11 @@ type UserInfoProps = {
 const UserInfo = ({ avatar, name }: UserInfoProps) => {
   return (
     <HStack spacing={8}>
-      <Image source={avatar} style={styles.imgAvatar} contentFit="cover" />
+      <Image
+        source={{ uri: avatar }}
+        style={styles.imgAvatar}
+        contentFit="cover"
+      />
       <VStack spacing={2}>
         <Text type="body2" weight="bold" color="white">
           {name}

@@ -10,7 +10,7 @@ const DATA = [
     image: 'https://picsum.photos/id/32/900/1600',
     author: {
       name: 'John Doe',
-      avatar: 'https://picsum.photos/id/181/900/1600',
+      avatar: 'https://picsum.photos/id/181/300/300',
       username: 'john_d',
     },
     vote: undefined,
@@ -23,7 +23,7 @@ const DATA = [
     image: 'https://picsum.photos/id/58/900/1600',
     author: {
       name: 'Jane Smith',
-      avatar: 'https://picsum.photos/id/122/900/1600',
+      avatar: 'https://picsum.photos/id/122/300/300',
       username: 'jane_s',
     },
     vote: 'downvote' as const,
@@ -36,7 +36,7 @@ const DATA = [
     image: 'https://picsum.photos/id/39/900/1600',
     author: {
       name: 'Michael Johnson',
-      avatar: 'https://picsum.photos/id/119/900/1600',
+      avatar: 'https://picsum.photos/id/119/300/300',
       username: 'michael_j',
     },
     vote: undefined,
@@ -49,7 +49,7 @@ const DATA = [
     image: 'https://picsum.photos/id/13/900/1600',
     author: {
       name: 'Emily Davis',
-      avatar: 'https://picsum.photos/id/109/900/1600',
+      avatar: 'https://picsum.photos/id/109/300/300',
       username: 'emily_d',
     },
     vote: 'upvote' as const,
@@ -62,7 +62,7 @@ const DATA = [
     image: 'https://picsum.photos/id/82/900/1600',
     author: {
       name: 'William Brown',
-      avatar: 'https://picsum.photos/id/117/900/1600',
+      avatar: 'https://picsum.photos/id/117/300/300',
       username: 'william_b',
     },
     vote: undefined,
@@ -75,7 +75,7 @@ const DATA = [
     image: 'https://picsum.photos/id/59/900/1600',
     author: {
       name: 'Olivia Wilson',
-      avatar: 'https://picsum.photos/id/173/900/1600',
+      avatar: 'https://picsum.photos/id/173/300/300',
       username: 'olivia_w',
     },
     vote: 'upvote' as const,
@@ -88,7 +88,7 @@ const DATA = [
     image: 'https://picsum.photos/id/42/900/1600',
     author: {
       name: 'James Taylor',
-      avatar: 'https://picsum.photos/id/186/900/1600',
+      avatar: 'https://picsum.photos/id/186/300/300',
       username: 'james_t',
     },
     vote: undefined,
@@ -101,7 +101,7 @@ const DATA = [
     image: 'https://picsum.photos/id/96/900/1600',
     author: {
       name: 'Isabella Anderson',
-      avatar: 'https://picsum.photos/id/103/900/1600',
+      avatar: 'https://picsum.photos/id/103/300/300',
       username: 'isabella_a',
     },
     vote: 'upvote' as const,
@@ -114,7 +114,7 @@ const DATA = [
     image: 'https://picsum.photos/id/25/900/1600',
     author: {
       name: 'Benjamin Martinez',
-      avatar: 'https://picsum.photos/id/113/900/1600',
+      avatar: 'https://picsum.photos/id/113/300/300',
       username: 'benjamin_m',
     },
     vote: 'downvote' as const,
@@ -127,7 +127,7 @@ const DATA = [
     image: 'https://picsum.photos/id/54/900/1600',
     author: {
       name: 'Sophia Thompson',
-      avatar: 'https://picsum.photos/id/123/900/1600',
+      avatar: 'https://picsum.photos/id/123/300/300',
       username: 'sophia_t',
     },
     vote: 'downvote' as const,
