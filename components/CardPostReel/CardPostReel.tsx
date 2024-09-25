@@ -30,7 +30,7 @@ export type Author = {
   username: string;
 };
 
-type CardPostProps = {
+type CardPostReelProps = {
   caption: string;
   image: string;
   author: Author;
@@ -39,14 +39,14 @@ type CardPostProps = {
   commentCount: number;
 };
 
-function CardPost({
+function CardPostReel({
   author,
   caption,
   image,
   vote,
   upvoteCount,
   commentCount,
-}: CardPostProps) {
+}: CardPostReelProps) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const { top, bottom } = useSafeAreaInsets();
   const height = Metrics.screenHeight - 48 - top;
@@ -273,4 +273,4 @@ const Input = () => {
   );
 };
 
-export default memo(CardPost);
+export default memo(CardPostReel);

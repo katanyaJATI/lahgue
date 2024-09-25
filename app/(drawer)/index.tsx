@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { CardPost } from '@/components';
+import { CardPostReel } from '@/components';
 
 const DATA = [
   {
@@ -136,13 +136,14 @@ const DATA = [
 ];
 
 export default function HomeScreen() {
+  const isReelMode = true
   return (
     <View style={styles.container}>
       <FlatList
         style={styles.content}
         data={DATA}
         renderItem={({ item }) => (
-          <CardPost
+          <CardPostReel
             author={item.author}
             caption={item.caption}
             image={item.image}
@@ -152,7 +153,7 @@ export default function HomeScreen() {
           />
         )}
         keyExtractor={(_, index) => 'item-' + index}
-        pagingEnabled
+        pagingEnabled={isReelMode}
         showsVerticalScrollIndicator={false}
       />
     </View>

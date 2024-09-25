@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Tag, Text, UserInfo, VStack } from '@/components';
 import styles from './style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Author } from './CardPost';
+import { Author } from './CardPostReel';
 
 type PostInfoProps = {
   author: Author;

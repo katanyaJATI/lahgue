@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 
 import styles from './style';
 import { HStack, Text, UserInfo, VStack } from '@/components';
-import { Author } from '../CardPost';
+import { Author } from '../CardPostReel';
 import { TouchableOpacity } from 'react-native';
 import { ICThumbUp } from '@/assets/icons';
 import colors from '@/styles/colors';

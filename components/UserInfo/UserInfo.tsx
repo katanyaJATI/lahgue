@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 import styles from './style';
 
 import { HStack, Text } from '@/components';
-import { Author } from '@/components/CardPost';
+import { Author } from '@/components/CardPostReel';
 
 type UserInfoProps = {
   avatar: Author['avatar'];
