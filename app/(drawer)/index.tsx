@@ -1,148 +1,44 @@
-import { FlatList, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 
-import { CardPost, CardPostReel } from '@/components';
+import { CardPost, CardPostReel, VStack } from '@/components';
 import colors from '@/styles/colors';
-
-const DATA = [
-  {
-    caption:
-      'This is a caption for post 1. This is a caption for post 1. This is a caption for post 1. This is a caption for post 1. ',
-    image: 'https://picsum.photos/id/32/900/1200',
-    author: {
-      name: 'John Doe',
-      avatar: 'https://picsum.photos/id/181/300/300',
-      username: 'john_d',
-    },
-    vote: undefined,
-    upvoteCount: 312,
-    commentCount: 59,
-  },
-  {
-    caption:
-      'This is a caption for post 2. This is a caption for post 2. This is a caption for post 2. This is a caption for post 2. ',
-    image: 'https://picsum.photos/id/58/900/1200',
-    author: {
-      name: 'Jane Smith',
-      avatar: 'https://picsum.photos/id/122/300/300',
-      username: 'jane_s',
-    },
-    vote: 'downvote' as const,
-    upvoteCount: 327,
-    commentCount: 32,
-  },
-  {
-    caption:
-      'This is a caption for post 3. This is a caption for post 3. This is a caption for post 3. This is a caption for post 3. ',
-    image: 'https://picsum.photos/id/39/900/900',
-    author: {
-      name: 'Michael Johnson',
-      avatar: 'https://picsum.photos/id/119/300/300',
-      username: 'michael_j',
-    },
-    vote: undefined,
-    upvoteCount: 314,
-    commentCount: 57,
-  },
-  {
-    caption:
-      'This is a caption for post 4. This is a caption for post 4. This is a caption for post 4. This is a caption for post 4. ',
-    image: 'https://picsum.photos/id/13/900/1200',
-    author: {
-      name: 'Emily Davis',
-      avatar: 'https://picsum.photos/id/109/300/300',
-      username: 'emily_d',
-    },
-    vote: 'upvote' as const,
-    upvoteCount: 386,
-    commentCount: 99,
-  },
-  {
-    caption:
-      'This is a caption for post 5. This is a caption for post 5. This is a caption for post 5. This is a caption for post 5. ',
-    image: 'https://picsum.photos/id/82/900/1200',
-    author: {
-      name: 'William Brown',
-      avatar: 'https://picsum.photos/id/117/300/300',
-      username: 'william_b',
-    },
-    vote: undefined,
-    upvoteCount: 166,
-    commentCount: 83,
-  },
-  {
-    caption:
-      'This is a caption for post 6. This is a caption for post 6. This is a caption for post 6. This is a caption for post 6. ',
-    image: 'https://picsum.photos/id/59/900/1200',
-    author: {
-      name: 'Olivia Wilson',
-      avatar: 'https://picsum.photos/id/173/300/300',
-      username: 'olivia_w',
-    },
-    vote: 'upvote' as const,
-    upvoteCount: 16,
-    commentCount: 36,
-  },
-  {
-    caption:
-      'This is a caption for post 7. This is a caption for post 7. This is a caption for post 7. This is a caption for post 7. ',
-    image: 'https://picsum.photos/id/42/900/1200',
-    author: {
-      name: 'James Taylor',
-      avatar: 'https://picsum.photos/id/186/300/300',
-      username: 'james_t',
-    },
-    vote: undefined,
-    upvoteCount: 189,
-    commentCount: 85,
-  },
-  {
-    caption:
-      'This is a caption for post 8. This is a caption for post 8. This is a caption for post 8. This is a caption for post 8. ',
-    image: 'https://picsum.photos/id/96/900/1200',
-    author: {
-      name: 'Isabella Anderson',
-      avatar: 'https://picsum.photos/id/103/300/300',
-      username: 'isabella_a',
-    },
-    vote: 'upvote' as const,
-    upvoteCount: 325,
-    commentCount: 99,
-  },
-  {
-    caption:
-      'This is a caption for post 9. This is a caption for post 9. This is a caption for post 9. This is a caption for post 9. ',
-    image: 'https://picsum.photos/id/25/900/1200',
-    author: {
-      name: 'Benjamin Martinez',
-      avatar: 'https://picsum.photos/id/113/300/300',
-      username: 'benjamin_m',
-    },
-    vote: 'downvote' as const,
-    upvoteCount: 61,
-    commentCount: 20,
-  },
-  {
-    caption:
-      'This is a caption for post 10. This is a caption for post 10. This is a caption for post 10. This is a caption for post 10. ',
-    image: 'https://picsum.photos/id/54/900/1200',
-    author: {
-      name: 'Sophia Thompson',
-      avatar: 'https://picsum.photos/id/123/300/300',
-      username: 'sophia_t',
-    },
-    vote: 'downvote' as const,
-    upvoteCount: 201,
-    commentCount: 80,
-  },
-];
+import { useState } from 'react';
+import { generateRandomPosts } from '@/utils/posts';
+import { PostType } from '@/services/post';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
+  const [data, setData] = useState<PostType[]>(generateRandomPosts(10));
+  const [loadMore, setLoadMore] = useState(false);
+
+  // Simulate API call for loading more random data
+  function loadMoreData(): Promise<PostType[]> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const moreData = generateRandomPosts(10); // Always generate 10 new posts
+        resolve(moreData);
+      }, 1000); // 1 second delay to simulate API response time
+    });
+  }
+
+  function onLoadMore() {
+    setLoadMore(true);
+    loadMoreData().then((newData) => {
+      let _data = data;
+      _data = [..._data, ...newData];
+      setData(_data);
+      setLoadMore(false);
+    });
+  }
+
+  const { bottom } = useSafeAreaInsets();
+
   const isReelMode = false;
   return (
     <View style={styles.container}>
       <FlatList
         style={styles.content}
-        data={DATA}
+        data={data}
         renderItem={({ item }) => {
           const Component = isReelMode ? CardPostReel : CardPost;
           return (
@@ -162,6 +58,14 @@ export default function HomeScreen() {
         ItemSeparatorComponent={() =>
           !isReelMode ? <View style={styles.separator} /> : null
         }
+        onEndReached={onLoadMore}
+        ListFooterComponent={
+          loadMore ? (
+            <VStack align="center" mt={12} mb={bottom || 12}>
+              <ActivityIndicator />
+            </VStack>
+          ) : null
+        }
       />
     </View>
   );
@@ -170,7 +74,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
   },
   content: {
     flex: 1,

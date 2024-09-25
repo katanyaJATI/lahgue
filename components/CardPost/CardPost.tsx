@@ -48,9 +48,7 @@ function CardPost({
   commentCount,
 }: CardPostProps) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const { top, bottom } = useSafeAreaInsets();
-  // const height = Metrics.screenHeight - 48 - top;
-  const [calcImgHeight, setCalcImgHeight] = useState(0);
+  const [calcImgHeight, setCalcImgHeight] = useState(Metrics.screenWidth);
   const width = Metrics.screenWidth;
 
   return (
