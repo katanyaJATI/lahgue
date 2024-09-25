@@ -1,50 +1,35 @@
-# Welcome to your Expo app 👋
+# Lahelu Mobile Clone App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+Welcome to the Lahelu Mobile Clone project! This Expo app aims to replicate the home page of Lahelu, which you can check out at [lahelu.com](https://lahelu.com/) or download from the Play Store. The goal is to implement as many features as possible within 7 days.
 
-1. Install dependencies
+## Features Implemented
 
-   ```bash
-   npm install
-   ```
+- **Clean Code**: Followed best practices for maintainability and readability.
+- **Optimized Infinite Scroll**: Smooth and efficient loading of content as users scroll.
+- **Accurate Design**: Created a layout closely resembling the original Lahelu design.
+- **List Mode Toggle**: Easily switch between "Normal" mode and "Reels" mode by selecting the "Reels" option in the drawer menu.
+- **Pagination**: Implemented a list view similar to Instagram Reels and TikTok feeds.
+- **Proof of Concept (PoC)**: Created a list that mimics the functionality of Instagram Reels and TikTok feeds using pagination.
+- **TypeScript**: Used TypeScript for better type safety and development experience.
 
-2. Start the app
+### Additional Implementations
 
-   ```bash
-    npx expo start
-   ```
+- **ESLint**: Integrated ESLint for code quality and consistency.
+- **API Simulation**: Created mock APIs for testing and development.
+- **Responsive Layout**: Ensured the app is responsive for tablet users.
 
-In the output, you'll find options to open the app in a
+## Videos
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Here is a video showcasing the app:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+[Video 1](https://github.com/katanyaJATI/lahgue/blob/f6de5e4f773d5b26609883fc4630ab25424338f8/Simulator%20Screen%20Recording%20-%20iPhone%2016%20Pro%20-%202024-09-25%20at%2020.08.07.mov)
 
-## Get a fresh project
+## APK Download
 
-When you're ready, run:
+You can download the APK from the following link: [Download APK](https://github.com/katanyaJATI/lahgue/blob/2575a5cc116dd456cc1af3b6f455cc7eb315213e/lahgue-katanyajati.apk)
 
-```bash
-npm run reset-project
-```
+## Conclusion
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Feel free to explore the app and its features. Your feedback is always welcome!
