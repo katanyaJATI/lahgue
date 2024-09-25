@@ -49,7 +49,7 @@ function CardPostReel({
 }: CardPostReelProps) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const { top, bottom } = useSafeAreaInsets();
-  const height = Metrics.screenHeight - 48 - top;
+  const height = Metrics.screenHeight - 48 - (Platform.OS === 'ios' ? top : 0);
 
   return (
     <>
