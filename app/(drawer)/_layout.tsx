@@ -17,9 +17,9 @@ export default function DrawerLayout() {
         }}
       />
       <Drawer.Screen
-        name="explore"
+        name="reels"
         options={{
-          drawerLabel: 'Fresh',
+          drawerLabel: 'Reels',
         }}
       />
     </Drawer>
