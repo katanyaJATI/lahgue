@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TextInput, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Sharing from 'expo-sharing';
 
@@ -21,7 +21,8 @@ import {
   BottomSheetModal,
 } from '@gorhom/bottom-sheet';
 import { HStack, PostComment, Text } from '@/components';
-import { ICClose } from '@/assets/icons';
+import { ICClose, ICMonetize, ICPaperclip } from '@/assets/icons';
+import { useKeyboardVisible } from '@/hooks/useKeyboardVisible';
 
 export type Author = {
   name: string;
@@ -169,7 +170,7 @@ const CommentsSheet = forwardRef<BottomSheetModal, CommentsSheetProps>(
     }, []);
     const snapPoints = useMemo(() => ['100%'], []);
 
-    const { top } = useSafeAreaInsets();
+    const { top, bottom } = useSafeAreaInsets();
 
     // renders
     return (
@@ -182,6 +183,7 @@ const CommentsSheet = forwardRef<BottomSheetModal, CommentsSheetProps>(
         enableOverDrag={false}
         enableContentPanningGesture={false}
         maxDynamicContentSize={Metrics.screenHeight * 0.7}
+        footerComponent={Input}
       >
         <BottomSheetFlatList
           data={comments}
@@ -235,5 +237,40 @@ const CommentsSheet = forwardRef<BottomSheetModal, CommentsSheetProps>(
     );
   },
 );
+
+{
+  /* TODO : Add input component */
+}
+const Input = () => {
+  const { isKeyboardVisible, keyboardHeight } = useKeyboardVisible();
+  const [input, setInput] = useState<string>('');
+  const { bottom } = useSafeAreaInsets();
+  return (
+    <HStack
+      spacing={0}
+      style={[
+        styles.inputContainer,
+        { paddingBottom: bottom || 8 },
+        isKeyboardVisible && { paddingBottom: keyboardHeight + 8 },
+      ]}
+    >
+      <View style={styles.inputWrapper}>
+        <TextInput
+          placeholder="Kirim komentarmu..."
+          style={styles.input}
+          value={input}
+          onChangeText={setInput}
+        />
+      </View>
+
+      <TouchableOpacity activeOpacity={0.8} style={styles.btnInputAction}>
+        <ICPaperclip />
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.8} style={styles.btnInputAction}>
+        <ICMonetize />
+      </TouchableOpacity>
+    </HStack>
+  );
+};
 
 export default memo(CardPost);

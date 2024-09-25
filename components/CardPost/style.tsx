@@ -94,6 +94,34 @@ export default StyleSheet.create({
     columnGap: 8,
   },
 
+  inputContainer: {
+    paddingLeft: Metrics.marginHorizontal,
+    paddingRight: Metrics.marginHorizontal / 2,
+    paddingVertical: 8,
+    borderTopWidth: 0.6,
+    borderColor: colors.border + '33',
+    backgroundColor: colors.white
+  },
+  inputWrapper: {
+    flex: 1,
+    borderRadius: Metrics.radius,
+    backgroundColor: colors.white,
+    borderWidth: 0.6,
+    borderColor: colors.border + '33',
+    paddingHorizontal: 16,
+  },
+  input: {
+    padding: 0,
+    height: 44,
+
+  },
+  btnInputAction: {
+    padding: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: 'pink',
+  },
+
   shadow: {
     elevation: 1,
     shadowColor: colors.black,

@@ -5,3 +5,5 @@ export { default as ICComment } from './ic-comment';
 export { default as ICShare } from './ic-share';
 export { default as ICThumbUp } from './ic-thumb-up';
 export { default as ICClose } from './ic-close';
+export { default as ICPaperclip } from './ic-paperclip';
+export { default as ICMonetize } from './ic-monetize';
