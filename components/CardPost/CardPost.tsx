@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native';
+import { Platform, ScrollView, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Image from 'react-native-fast-image';
 import * as Sharing from 'expo-sharing';
@@ -229,7 +229,7 @@ const CommentsSheet = forwardRef<BottomSheetModal, CommentsSheetProps>(
             <>
               <HStack
                 spacing={12}
-                style={[styles.commentsHeader, { paddingTop: top - 24 }]}
+                style={[styles.commentsHeader, { paddingTop: top }]}
               >
                 <Text type="subtitle2" weight="bold" flex numberOfLines={1}>
                   {caption}
@@ -279,7 +279,8 @@ const Input = () => {
       style={[
         styles.inputContainer,
         { paddingBottom: bottom || 8 },
-        isKeyboardVisible && { paddingBottom: keyboardHeight + 8 },
+        isKeyboardVisible &&
+          Platform.OS === 'ios' && { paddingBottom: keyboardHeight + 8 },
       ]}
     >
       <View style={styles.inputWrapper}>
