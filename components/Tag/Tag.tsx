@@ -18,16 +18,19 @@ function Tag({ type = 'default', label, onPress }: TagProps) {
     let icon = '';
     let backgroundColor: ColorKey = 'white';
     let textColor: ColorKey = 'plain';
+    let borderColor: ColorKey = 'plain';
     switch (type) {
       case 'default':
         icon = '#';
         backgroundColor = 'white';
         textColor = 'plain';
+        borderColor = 'fill_1';
         break;
       case 'monetize':
         icon = '$';
         backgroundColor = 'orange';
         textColor = 'white';
+        borderColor = 'orange';
         break;
 
       default:
@@ -36,6 +39,7 @@ function Tag({ type = 'default', label, onPress }: TagProps) {
     return {
       backgroundColor,
       textColor,
+      borderColor,
       icon,
     };
   }, [type]);
@@ -47,6 +51,7 @@ function Tag({ type = 'default', label, onPress }: TagProps) {
           styles.label,
           {
             backgroundColor: colors[color.backgroundColor],
+            borderColor: colors[color.borderColor],
           },
         ]}
       >

@@ -7,5 +7,6 @@ export default StyleSheet.create({
     paddingHorizontal: 8,
     borderRadius: 12,
     alignItems: 'center',
+    borderWidth: 1,
   },
 });

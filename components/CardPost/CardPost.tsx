@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { TextInput, TouchableOpacity, View } from 'react-native';
+import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Image from 'react-native-fast-image';
 import * as Sharing from 'expo-sharing';
@@ -20,7 +20,7 @@ import {
   BottomSheetFlatList,
   BottomSheetModal,
 } from '@gorhom/bottom-sheet';
-import { HStack, PostComment, Text } from '@/components';
+import { HStack, PostComment, Tag, Text } from '@/components';
 import { ICClose, ICMonetize, ICPaperclip } from '@/assets/icons';
 import { useKeyboardVisible } from '@/hooks/useKeyboardVisible';
 
@@ -30,7 +30,7 @@ export type Author = {
   username: string;
 };
 
-type CardPostReelProps = {
+type CardPostProps = {
   caption: string;
   image: string;
   author: Author;
@@ -39,26 +39,59 @@ type CardPostReelProps = {
   commentCount: number;
 };
 
-function CardPostReel({
+function CardPost({
   author,
   caption,
   image,
   vote,
   upvoteCount,
   commentCount,
-}: CardPostReelProps) {
+}: CardPostProps) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const { top, bottom } = useSafeAreaInsets();
-  const height = Metrics.screenHeight - 48 - top;
+  // const height = Metrics.screenHeight - 48 - top;
+  const [calcImgHeight, setCalcImgHeight] = useState(0);
+  const width = Metrics.screenWidth;
 
   return (
     <>
-      <View style={[styles.item, { height }]}>
+      <View style={[styles.item]}>
+        <PostInfo author={author} caption={caption} />
         <Image
-          style={styles.content}
+          style={[styles.imgPost, { height: calcImgHeight }]}
           source={{ uri: image }}
           resizeMode="cover"
+          onLoad={(evt) =>
+            // By this, you keep the image ratio
+            setCalcImgHeight(
+              (evt.nativeEvent.height / evt.nativeEvent.width) * width,
+            )
+          }
         />
+
+        <ScrollView
+          style={styles.tags}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
+          <HStack spacing={8}>
+            <Tag
+              type="monetize"
+              label="Sawer"
+              onPress={() => console.log('pressed Sawer')}
+            />
+            <Tag
+              label="meme-dark-sejarah"
+              onPress={() => console.log('pressed meme-dark-sejarah')}
+            />
+            <Tag label="anime" onPress={() => console.log('pressed anime')} />
+            <Tag label="game" onPress={() => console.log('pressed game')} />
+            <Tag
+              label="original"
+              onPress={() => console.log('pressed original')}
+            />
+          </HStack>
+        </ScrollView>
 
         <ActionsButton
           vote={vote}
@@ -72,8 +105,6 @@ function CardPostReel({
             }
           }}
         />
-
-        <PostInfo author={author} caption={caption} />
       </View>
 
       <CommentsSheet ref={bottomSheetModalRef} caption={caption} />
@@ -272,4 +303,4 @@ const Input = () => {
   );
 };
 
-export default memo(CardPostReel);
+export default memo(CardPost);

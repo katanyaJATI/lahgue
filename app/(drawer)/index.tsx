@@ -1,12 +1,13 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { CardPostReel } from '@/components';
+import { CardPost, CardPostReel } from '@/components';
+import colors from '@/styles/colors';
 
 const DATA = [
   {
     caption:
       'This is a caption for post 1. This is a caption for post 1. This is a caption for post 1. This is a caption for post 1. ',
-    image: 'https://picsum.photos/id/32/900/1600',
+    image: 'https://picsum.photos/id/32/900/1200',
     author: {
       name: 'John Doe',
       avatar: 'https://picsum.photos/id/181/300/300',
@@ -19,7 +20,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 2. This is a caption for post 2. This is a caption for post 2. This is a caption for post 2. ',
-    image: 'https://picsum.photos/id/58/900/1600',
+    image: 'https://picsum.photos/id/58/900/1200',
     author: {
       name: 'Jane Smith',
       avatar: 'https://picsum.photos/id/122/300/300',
@@ -32,7 +33,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 3. This is a caption for post 3. This is a caption for post 3. This is a caption for post 3. ',
-    image: 'https://picsum.photos/id/39/900/1600',
+    image: 'https://picsum.photos/id/39/900/900',
     author: {
       name: 'Michael Johnson',
       avatar: 'https://picsum.photos/id/119/300/300',
@@ -45,7 +46,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 4. This is a caption for post 4. This is a caption for post 4. This is a caption for post 4. ',
-    image: 'https://picsum.photos/id/13/900/1600',
+    image: 'https://picsum.photos/id/13/900/1200',
     author: {
       name: 'Emily Davis',
       avatar: 'https://picsum.photos/id/109/300/300',
@@ -58,7 +59,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 5. This is a caption for post 5. This is a caption for post 5. This is a caption for post 5. ',
-    image: 'https://picsum.photos/id/82/900/1600',
+    image: 'https://picsum.photos/id/82/900/1200',
     author: {
       name: 'William Brown',
       avatar: 'https://picsum.photos/id/117/300/300',
@@ -71,7 +72,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 6. This is a caption for post 6. This is a caption for post 6. This is a caption for post 6. ',
-    image: 'https://picsum.photos/id/59/900/1600',
+    image: 'https://picsum.photos/id/59/900/1200',
     author: {
       name: 'Olivia Wilson',
       avatar: 'https://picsum.photos/id/173/300/300',
@@ -84,7 +85,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 7. This is a caption for post 7. This is a caption for post 7. This is a caption for post 7. ',
-    image: 'https://picsum.photos/id/42/900/1600',
+    image: 'https://picsum.photos/id/42/900/1200',
     author: {
       name: 'James Taylor',
       avatar: 'https://picsum.photos/id/186/300/300',
@@ -97,7 +98,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 8. This is a caption for post 8. This is a caption for post 8. This is a caption for post 8. ',
-    image: 'https://picsum.photos/id/96/900/1600',
+    image: 'https://picsum.photos/id/96/900/1200',
     author: {
       name: 'Isabella Anderson',
       avatar: 'https://picsum.photos/id/103/300/300',
@@ -110,7 +111,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 9. This is a caption for post 9. This is a caption for post 9. This is a caption for post 9. ',
-    image: 'https://picsum.photos/id/25/900/1600',
+    image: 'https://picsum.photos/id/25/900/1200',
     author: {
       name: 'Benjamin Martinez',
       avatar: 'https://picsum.photos/id/113/300/300',
@@ -123,7 +124,7 @@ const DATA = [
   {
     caption:
       'This is a caption for post 10. This is a caption for post 10. This is a caption for post 10. This is a caption for post 10. ',
-    image: 'https://picsum.photos/id/54/900/1600',
+    image: 'https://picsum.photos/id/54/900/1200',
     author: {
       name: 'Sophia Thompson',
       avatar: 'https://picsum.photos/id/123/300/300',
@@ -136,25 +137,31 @@ const DATA = [
 ];
 
 export default function HomeScreen() {
-  const isReelMode = true
+  const isReelMode = false;
   return (
     <View style={styles.container}>
       <FlatList
         style={styles.content}
         data={DATA}
-        renderItem={({ item }) => (
-          <CardPostReel
-            author={item.author}
-            caption={item.caption}
-            image={item.image}
-            vote={item.vote}
-            upvoteCount={item.upvoteCount}
-            commentCount={item.commentCount}
-          />
-        )}
+        renderItem={({ item }) => {
+          const Component = isReelMode ? CardPostReel : CardPost;
+          return (
+            <Component
+              author={item.author}
+              caption={item.caption}
+              image={item.image}
+              vote={item.vote}
+              upvoteCount={item.upvoteCount}
+              commentCount={item.commentCount}
+            />
+          );
+        }}
         keyExtractor={(_, index) => 'item-' + index}
         pagingEnabled={isReelMode}
         showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() =>
+          !isReelMode ? <View style={styles.separator} /> : null
+        }
       />
     </View>
   );
@@ -163,9 +170,13 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white
   },
   content: {
     flex: 1,
+  },
+  separator: {
+    height: 4,
+    backgroundColor: colors.fill_1,
   },
 });
